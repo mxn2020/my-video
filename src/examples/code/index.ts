@@ -1,4 +1,5 @@
 import { animatedShapesExample } from "./animated-shapes";
+import { cloudEvolutionExample } from "./cloud-evolution";
 import { fallingSpheresExample } from "./falling-spheres";
 import { goldPriceChartExample } from "./gold-price-chart";
 import { histogramExample } from "./histogram";
@@ -19,6 +20,7 @@ export interface RemotionExample {
 }
 
 export const examples: RemotionExample[] = [
+  cloudEvolutionExample,
   textRotationExample,
   histogramExample,
   progressBarExample,
