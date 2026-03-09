@@ -1,4 +1,6 @@
 # Remotion Prompt to Motion Graphics
+[![CI](https://github.com/mxn2020/remotion-video/actions/workflows/ci.yml/badge.svg)](https://github.com/mxn2020/remotion-video/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">

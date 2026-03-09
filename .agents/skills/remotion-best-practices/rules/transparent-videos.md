@@ -48,8 +48,8 @@ const calculateMetadata: CalculateMetadataFunction<Props> = async ({
 };
 
 <Composition
-  id="my-video"
-  component={MyVideo}
+  id="remotion-video"
+  component={RemotionVideo}
   durationInFrames={150}
   fps={30}
   width={1920}
@@ -95,8 +95,8 @@ const calculateMetadata: CalculateMetadataFunction<Props> = async ({
 };
 
 <Composition
-  id="my-video"
-  component={MyVideo}
+  id="remotion-video"
+  component={RemotionVideo}
   durationInFrames={150}
   fps={30}
   width={1920}

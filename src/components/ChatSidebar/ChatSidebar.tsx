@@ -1,6 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useGenerationApi } from "@/hooks/useGenerationApi";
 import { cn } from "@/lib/utils";
 import type {
@@ -111,6 +119,7 @@ export const ChatSidebar = forwardRef<ChatSidebarRef, ChatSidebarProps>(
     ref,
   ) {
     const [model, setModel] = useState<ModelId>(MODELS[1].id);
+    const [showResetDialog, setShowResetDialog] = useState(false);
     const promptRef = useRef<string>("");
 
     const { isLoading, runGeneration } = useGenerationApi();
@@ -162,84 +171,102 @@ export const ChatSidebar = forwardRef<ChatSidebarRef, ChatSidebarProps>(
     }));
 
     return (
-      <div
-        className={cn(
-          "flex flex-col bg-background transition-all duration-300",
-          isCollapsed
-            ? "w-12 shrink-0"
-            : "w-full h-[40vh] min-[1000px]:h-auto min-[1000px]:w-[40%] min-[1000px]:min-w-[320px] min-[1000px]:max-w-[520px] shrink",
-        )}
-      >
-        {isCollapsed ? (
-          <div className="flex justify-center px-4 mb-3">
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              onClick={onToggleCollapse}
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <PanelLeftOpen className="w-4 h-4" />
-            </Button>
-          </div>
-        ) : (
-          /* Chat area with subtle backdrop */
-          <div className="flex-1 flex flex-col min-h-0 ml-12 mr-8 mb-8 rounded-xl bg-muted/20 border border-border/30 shadow-sm">
-            {/* Header */}
-            <div className="flex items-start justify-between px-4 pt-4 pb-2">
-              <h2 className="text-sm font-medium text-muted-foreground">
-                Assistant Chat
-              </h2>
-              <div className="flex items-center gap-1 -mt-1">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    if (
-                      window.confirm(
-                        "Start over? This will reset your animation.",
-                      )
-                    ) {
-                      window.location.href = "/";
-                    }
-                  }}
-                  title="Start over"
-                  className="text-muted-foreground hover:text-foreground text-xs gap-1 h-7 px-2"
-                >
-                  <RotateCcw className="w-3 h-3" />
-                  Reset
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon-sm"
-                  onClick={onToggleCollapse}
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  <PanelLeftClose className="w-4 h-4" />
-                </Button>
-              </div>
+      <>
+        <div
+          className={cn(
+            "flex flex-col bg-background transition-all duration-300",
+            isCollapsed
+              ? "w-12 shrink-0"
+              : "w-full h-[40vh] min-[1000px]:h-auto min-[1000px]:w-[40%] min-[1000px]:min-w-[320px] min-[1000px]:max-w-[520px] shrink",
+          )}
+        >
+          {isCollapsed ? (
+            <div className="flex justify-center px-4 mb-3">
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                onClick={onToggleCollapse}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <PanelLeftOpen className="w-4 h-4" />
+              </Button>
             </div>
+          ) : (
+            /* Chat area with subtle backdrop */
+            <div className="flex-1 flex flex-col min-h-0 ml-12 mr-8 mb-8 rounded-xl bg-muted/20 border border-border/30 shadow-sm">
+              {/* Header */}
+              <div className="flex items-start justify-between px-4 pt-4 pb-2">
+                <h2 className="text-sm font-medium text-muted-foreground">
+                  Assistant Chat
+                </h2>
+                <div className="flex items-center gap-1 -mt-1">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowResetDialog(true)}
+                    title="Start over"
+                    className="text-muted-foreground hover:text-foreground text-xs gap-1 h-7 px-2"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    Reset
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon-sm"
+                    onClick={onToggleCollapse}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <PanelLeftClose className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
 
-            {/* Messages */}
-            <ChatHistory messages={messages} pendingMessage={pendingMessage} />
+              {/* Messages */}
+              <ChatHistory messages={messages} pendingMessage={pendingMessage} />
 
-            {/* Input */}
-            <ChatInput
-              prompt={prompt}
-              onPromptChange={onPromptChange}
-              model={model}
-              onModelChange={setModel}
-              isLoading={isLoading}
-              onSubmit={(attachedImages) =>
-                handleGeneration({ attachedImages })
-              }
-              Component={Component}
-              fps={fps}
-              durationInFrames={durationInFrames}
-              currentFrame={currentFrame}
-            />
-          </div>
-        )}
-      </div>
+              {/* Input */}
+              <ChatInput
+                prompt={prompt}
+                onPromptChange={onPromptChange}
+                model={model}
+                onModelChange={setModel}
+                isLoading={isLoading}
+                onSubmit={(attachedImages) =>
+                  handleGeneration({ attachedImages })
+                }
+                Component={Component}
+                fps={fps}
+                durationInFrames={durationInFrames}
+                currentFrame={currentFrame}
+              />
+            </div>
+          )}
+        </div>
+
+        <Dialog open={showResetDialog} onOpenChange={setShowResetDialog}>
+          <DialogContent showCloseButton={false}>
+            <DialogHeader>
+              <DialogTitle>Start Over</DialogTitle>
+              <DialogDescription>
+                This will reset your animation. Are you sure?
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setShowResetDialog(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="destructive"
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+              >
+                Reset
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </>
     );
   },
 );

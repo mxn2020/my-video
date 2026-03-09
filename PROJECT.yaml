@@ -1,0 +1,16 @@
+id: 5706ad47-e60c-4ea3-aecc-90cafc8dc16f
+name: remotion-video
+description: "Remotion video creator — programmatic video generation with React"
+tier: prototype
+lane: side-projects
+priority: medium
+category: infra
+focus: true
+open_tasks: 0
+oss: false
+stack: [typescript, react, remotion]
+repo: null
+deploy_url: null
+last_active: 2026-03-02
+tags: [ai, convex]
+notes:

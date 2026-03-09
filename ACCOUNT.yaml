@@ -1,0 +1,12 @@
+services:
+  convex:
+    project: RemotionVideo
+  vercel:
+    project: RemotionVideo
+  stripe:
+    mode: live
+  nvidia:
+    api: nvidia-nims
+  github:
+    owner: mxn2020
+    repo: remotion-video
