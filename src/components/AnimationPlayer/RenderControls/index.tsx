@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@geenius-ui/react";
 import { Download } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useRendering } from "../../../helpers/use-rendering";

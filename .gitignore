@@ -37,3 +37,8 @@ next-env.d.ts
 out/
 .env
 build
+
+# Added by AI Agent
+dist
+.env.*
+!.env.example

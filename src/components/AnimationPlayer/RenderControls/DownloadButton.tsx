@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@geenius-ui/react";
 import React from "react";
 import { State } from "../../../helpers/use-rendering";
 

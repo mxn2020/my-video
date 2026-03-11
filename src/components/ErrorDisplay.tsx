@@ -1,7 +1,7 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "@geenius-ui/react";
 import { cn } from "@/lib/utils";
 import { AlertCircle, X } from "lucide-react";
 import React from "react";

@@ -1,14 +1,7 @@
 "use client";
 
 import { ErrorDisplay } from "@/components/ErrorDisplay";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@geenius-ui/react";
 import { examplePrompts } from "@/examples/prompts";
 import { useImageAttachments } from "@/hooks/useImageAttachments";
 import { MODELS, type ModelId } from "@/types/generation";
@@ -101,9 +94,8 @@ export function LandingPageInput({
 
       <form onSubmit={handleSubmit} className="w-full max-w-3xl">
         <div
-          className={`bg-background-elevated rounded-xl border p-4 transition-colors ${
-            isDragging ? "border-blue-500 bg-blue-500/10" : "border-border"
-          }`}
+          className={`bg-background-elevated rounded-xl border p-4 transition-colors ${isDragging ? "border-blue-500 bg-blue-500/10" : "border-border"
+            }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}

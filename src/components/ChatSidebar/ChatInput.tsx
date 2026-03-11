@@ -1,14 +1,14 @@
 "use client";
 
 import { ErrorDisplay } from "@/components/ErrorDisplay";
-import { Button } from "@/components/ui/button";
 import {
+  Button,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@geenius-ui/react";
 import { captureFrame } from "@/helpers/capture-frame";
 import { useImageAttachments } from "@/hooks/useImageAttachments";
 import { MODELS, type ModelId } from "@/types/generation";
@@ -107,9 +107,8 @@ export function ChatInput({
     <div className="px-4 pt-4 pb-4">
       <form onSubmit={handleSubmit}>
         <div
-          className={`bg-background-elevated rounded-xl border p-3 transition-colors ${
-            isDragging ? "border-blue-500 bg-blue-500/10" : "border-border"
-          }`}
+          className={`bg-background-elevated rounded-xl border p-3 transition-colors ${isDragging ? "border-blue-500 bg-blue-500/10" : "border-border"
+            }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}

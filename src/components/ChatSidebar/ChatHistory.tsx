@@ -4,7 +4,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@geenius-ui/react";
 import type { ConversationMessage } from "@/types/conversation";
 import { AlertTriangle, BookOpen, FileCode, PenLine } from "lucide-react";
 import { useEffect, useRef } from "react";
