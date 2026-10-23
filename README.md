@@ -1,6 +1,6 @@
 # Remotion Prompt to Motion Graphics
 [![CI](https://github.com/mxn2020/remotion-video/actions/workflows/ci.yml/badge.svg)](https://github.com/mxn2020/remotion-video/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellow.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <p align="center">
   <a href="https://github.com/remotion-dev/logo">
@@ -138,3 +138,7 @@ Found an issue with Remotion? [File an issue here](https://github.com/remotion-d
 ## License
 
 Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+
+---
+
+> **License note:** As of 2026-10-23 this project is licensed under the Apache License 2.0 (previously MIT). Versions released before this change remain available under MIT to those who received them.
